@@ -11,7 +11,7 @@
   const I18N = {
     en: {
       title: 'Amigo Invisible',
-      subtitle: 'A fully client-side secret-santa generator for GitHub Pages.',
+      subtitle: 'A fully client-side secret-santa generator.',
       language: 'Language',
       groups: 'Groups (houses)',
       groupsHelp: 'People in the same group never gift each other. Groups are numbered in creation order; reference them in blacklists as g1, g2, …',
