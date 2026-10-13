@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Amigo Invisible</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<div class="container">
+  <header class="topbar">
+    <div class="brand">
+      <span class="logo">🎁</span>
+      <div>
+        <h1 data-i18n="title">Amigo Invisible</h1>
+        <p class="subtitle" data-i18n="subtitle">A fully client-side secret-santa generator for GitHub Pages.</p>
+      </div>
+    </div>
+    <div class="toolbar">
+      <label class="sr-only" data-i18n="language">Language</label>
+      <select id="langSelect" aria-label="Language">
+        <option value="en">EN</option>
+        <option value="es">ES</option>
+      </select>
+    </div>
+  </header>
+
+  <!-- Reveal view -->
+  <section id="revealView" class="card reveal-view hidden">
+    <p class="reveal-eyebrow" data-i18n="yourAssignment">Your Secret Santa assignment</p>
+    <div id="revealName" class="reveal-name">—</div>
+    <p class="muted" id="revealHint" data-i18n="revealHint">Share the base URL with the organizer to start over.</p>
+    <button class="btn btn-secondary" id="backBtn" data-i18n="backOrg">Back to organizer</button>
+  </section>
+
+  <!-- Organizer view -->
+  <section id="orgView">
+    <div class="grid-2">
+      <article class="card">
+        <div class="card-head">
+          <h2 data-i18n="groups">Groups (houses)</h2>
+          <p class="help" data-i18n="groupsHelp">People in the same group never gift each other.</p>
+        </div>
+        <div id="groupsContainer" class="stack"></div>
+        <button class="btn btn-ghost" id="addGroupBtn" data-i18n="addGroup">+ Add group</button>
+      </article>
+
+      <article class="card">
+        <div class="card-head">
+          <h2 data-i18n="people">People</h2>
+          <p class="help" data-i18n="peopleHelp">Index numbers follow the list order.</p>
+        </div>
+        <div class="row" style="margin-bottom:10px">
+          <input id="newName" data-i18n-placeholder="namePlaceholder" placeholder="Name" />
+          <select id="newGroup"></select>
+          <input id="newBlacklist" data-i18n-placeholder="blacklistPlaceholder" placeholder="Blacklist (optional)" />
+          <button class="btn btn-primary" id="addPersonBtn" data-i18n="addPerson">+ Add person</button>
+        </div>
+        <div id="peopleContainer"></div>
+      </article>
+    </div>
+
+    <article class="card">
+      <div class="flex">
+        <button class="btn btn-primary" id="generateBtn" data-i18n="generate">Generate assignments</button>
+        <button class="btn btn-secondary" id="clearBtn" data-i18n="clearAll">Clear all</button>
+        <button class="btn btn-ghost" id="exportBtn" data-i18n="exportSetup">Export setup (JSON)</button>
+      </div>
+      <div id="msgBox"></div>
+    </article>
+
+    <article class="card hidden" id="exportPanel">
+      <div class="card-head">
+        <h2 data-i18n="exportTitle">Exported setup (JSON)</h2>
+        <p class="help" data-i18n="exportHelp">Copy the JSON below or download it as a file.</p>
+      </div>
+      <textarea id="exportArea" rows="10" readonly></textarea>
+      <div class="flex" style="margin-top:10px">
+        <button class="btn btn-ghost" id="copyJsonBtn" data-i18n="copyJson">Copy JSON</button>
+        <button class="btn btn-primary" id="downloadJsonBtn" data-i18n="downloadJson">Download JSON</button>
+        <button class="btn btn-secondary" id="exportCloseBtn" data-i18n="close">Close</button>
+      </div>
+    </article>
+
+    <article class="card hidden" id="resultsCard">
+      <div class="card-head">
+        <h2 data-i18n="resultsTitle">Secret links (share individually)</h2>
+        <p class="help" data-i18n="resultsHelp">Each link reveals only the recipient.</p>
+      </div>
+      <div class="flex" style="margin-bottom:10px">
+        <button class="btn btn-secondary" id="copyAllBtn" data-i18n="copyAll">Copy all links</button>
+        <button class="btn btn-ghost" id="downloadBtn" data-i18n="downloadLinks">Download links (.txt)</button>
+      </div>
+      <div id="resultsContainer"></div>
+    </article>
+
+    <article class="card">
+      <div class="card-head">
+        <h2 data-i18n="importSetup">Import setup (JSON)</h2>
+      </div>
+      <textarea id="importArea" rows="5" data-i18n-placeholder="importPlaceholder" placeholder='{"groups":[...],"people":[...]}'></textarea>
+      <div class="flex" style="margin-top:10px">
+        <button class="btn btn-secondary" id="importBtn" data-i18n="importBtn">Import</button>
+      </div>
+    </article>
+  </section>
+
+  <article class="card hidden" id="prevCard">
+    <div class="card-head">
+      <h2 data-i18n="previous">Previous results</h2>
+    </div>
+    <div id="prevContainer"></div>
+  </article>
+</div>
+
+<script src="app.js" defer></script>
+</body>
+</html>
