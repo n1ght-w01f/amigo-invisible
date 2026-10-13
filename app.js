@@ -74,7 +74,7 @@
     },
     es: {
       title: 'Amigo Invisible',
-      subtitle: 'Generador de amigo invisible 100% en el navegador, ideal para GitHub Pages.',
+      subtitle: 'Generador de amigo invisible 100% en el navegador.',
       language: 'Idioma',
       groups: 'Grupos (casas)',
       groupsHelp: 'Las personas del mismo grupo nunca se regalan entre sí. Los grupos se numeran en orden de creación; refiérelos en listas negras como g1, g2, …',
